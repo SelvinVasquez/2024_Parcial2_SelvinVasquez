@@ -5,6 +5,7 @@
 
 using namespace std;
 void crearArchivos(int cantidad);
+void agregarTexto();
 int contarArchivos();
 int contarArchivos2();
 
@@ -16,6 +17,7 @@ int main() {
         cout << "------------------------------------------------------------------------" << endl;
         cout << "Elija una opcion" << endl;
         cout << "1. Crear Archivos" << endl;
+        cout << "2. Agregar texto" << endl;
         cout << "0. Salir" << endl;
         cin >> opc;
         switch (opc) {
@@ -25,6 +27,9 @@ int main() {
                 cout << "Ingrese la cantidad de archivos que desea crear" << endl;
                 cin >> cantidad;
                 crearArchivos(cantidad);
+                break;
+            case 2:
+                cout << "Opcion seleccionada -> Agregar texto" << endl;
                 break;
             case 0:
                 cout << "Fin del programa" << endl;
@@ -44,6 +49,10 @@ void crearArchivos(int cantidad){
         for (int i = 0; i < cantidad; ++i) {
             ofstream file;
             file.open("C:/Users/selvi/Desktop/Manejo de Archivos/par/" + nombreArchivo + to_string(i + 1) + ".txt");
+            agregarTexto();
+            for (int j = 0; j < i+1; ++j) {
+                file << "linea de texto" << endl;
+            }
             file.close();
         }
         cout << cantidad << " Archivos creados con Exito" << endl;
@@ -60,9 +69,9 @@ void crearArchivos(int cantidad){
     }
 }
 
-/*void agregarTexto(){
+void agregarTexto(){
     cout << "Agregando texto..." << endl;
-}*/
+}
 
 int contarArchivos(){
     WIN32_FIND_DATA findFileData;
